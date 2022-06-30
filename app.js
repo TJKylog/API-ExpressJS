@@ -11,9 +11,14 @@ const app = express();
 main().catch(err => console.log(err));
 
 async function main() {
-    
     const uri = `mongodb://${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`;
-    await mongoose.connect(uri).then(() => console.log('MongoDB Connected'));
+    await mongoose.connect(uri,{
+        authSource: "admin",
+        user: process.env.DB_USER,
+        pass: process.env.DB_PASS,
+        useNewUrlParser: true,
+        useUnifiedTopology: true 
+    }).then(() => console.log('MongoDB Connected'));
 }
 
 //middleware
