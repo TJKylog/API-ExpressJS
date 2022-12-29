@@ -5,6 +5,7 @@ import path from 'path';
 import  mongoose  from 'mongoose';
 const dotenv = require('dotenv');
 dotenv.config();
+mongoose.set('strictQuery', true);
 
 const app = express();
 
@@ -17,7 +18,7 @@ async function main() {
         user: process.env.DB_USER,
         pass: process.env.DB_PASS,
         useNewUrlParser: true,
-        useUnifiedTopology: true 
+        useUnifiedTopology: true
     }).then(() => console.log('MongoDB Connected'));
 }
 
