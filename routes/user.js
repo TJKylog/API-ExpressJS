@@ -11,7 +11,7 @@ const saltRounds = 10;
 router.post('/register',async (req, res) => {
     const user = {
         name: req.body.name,
-        email: req.body.email,
+        email: req.body.email.toLowerCase(),
         role: req.body.role,
         password: req.body.password
     };
